@@ -1,6 +1,8 @@
 # syntax=docker/dockerfile:1
 FROM registry.suse.com/bci/bci-base:15.6
+
 RUN zypper ar -f obs://home:jirislaby/15.6 my_home
+RUN zypper ar -f obs://home:jirislaby:ccache/15.6 my_home_ccache
 RUN zypper --non-interactive --gpg-auto-import-keys refresh
 RUN zypper --no-refresh --non-interactive install \
   awk \
