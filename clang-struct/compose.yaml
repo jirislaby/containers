@@ -1,0 +1,15 @@
+services:
+  clang-struct:
+    build: .
+    stdin_open: true
+    tty: true
+    environment:
+      CCACHE_MAXSIZE: 20G
+      CCACHE_DIR: /src/ccache
+    volumes:
+      - type: bind
+        source: /dev/shm/jslaby/
+        target: /src/
+      - type: bind
+        source: home
+        target: /home/jslaby

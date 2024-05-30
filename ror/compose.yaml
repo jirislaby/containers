@@ -1,0 +1,15 @@
+services:
+  ror-clang-struct:
+    restart: unless-stopped
+    build: .
+    cpus: ${CPUS}
+    env_file:
+      - master-key.env
+    environment:
+      WEB_CONCURRENCY: ${CPUS}
+    ports:
+      - "3000:3000"
+      #volumes:
+      #- type: bind
+      #  source: log
+      #  target: /home/ruby/clang-struct/frontend/log/
