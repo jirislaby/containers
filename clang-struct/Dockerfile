@@ -43,6 +43,7 @@ so /usr/share/slaby-scripts/vimrc
 EOF
 RUN echo ". /usr/share/slaby-scripts/bashrc" >> /etc/bash.bashrc.local
 RUN ln -s "/usr/share/slaby-scripts/bash_profile" /etc/profile.d/slaby.sh
+COPY entrypoint /usr/bin/
 
 RUN useradd -u 10043 jslaby
 RUN mkdir /home/jslaby_loc
@@ -73,4 +74,5 @@ ENV LD_LIBRARY_PATH /home/jslaby_loc/clang-struct-install/usr/local/lib64/
 #RUN zypper --no-refresh --non-interactive install \
 #USER jslaby
 
-ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT [ "/usr/bin/entrypoint" ]
+CMD [ "all" ]

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -xe
+
+CMD="$1"
+shift
+
+function build()
+{
+	cd /src/linux
+	make O=../cl CC='clang' -j160 compile_commands.json
+}
+
+function run()
+{
+	cd /src/cl
+	rm structs.db || true
+	time run_commands.pl -b ../linux/ "$@"
+}
+
+case "$CMD" in
+	all) build && run ;;
+	build) build ;;
+	run) run "$@" ;;
+	shell) exec /bin/bash ;;
+esac
