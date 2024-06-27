@@ -13,6 +13,7 @@ RUN zypper --no-refresh --non-interactive install \
   clang-devel \
   cmake \
   diff \
+  findutils \
   flex \
   gcc \
   gcc-c++ \

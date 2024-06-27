@@ -8,6 +8,7 @@ RUN zypper --no-refresh --non-interactive install \
   bison \
   ccache \
   diff \
+  findutils \
   flex \
   gcc \
   git-core \
