@@ -21,6 +21,7 @@ RUN zypper --no-refresh --non-interactive install \
   libelf-devel \
   llvm-devel \
   make \
+  ncurses-devel \
   ninja \
   openssl-devel \
   'perl(DBD::SQLite)' \
