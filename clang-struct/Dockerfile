@@ -73,4 +73,4 @@ ENV LD_LIBRARY_PATH /home/jslaby_loc/clang-struct-install/usr/local/lib64/
 #RUN zypper --no-refresh --non-interactive install \
 #USER jslaby
 
-ENTRYPOINT /bin/bash
+ENTRYPOINT [ "/bin/bash" ]

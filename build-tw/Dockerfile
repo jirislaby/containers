@@ -33,4 +33,4 @@ RUN useradd -u 10043 jslaby
 USER jslaby
 WORKDIR /src
 
-ENTRYPOINT /bin/bash
+ENTRYPOINT [ "/bin/bash" ]
