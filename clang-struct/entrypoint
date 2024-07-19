@@ -8,7 +8,7 @@ shift
 function build()
 {
 	cd /src/linux
-	make O=../cl CC='clang' -j160 compile_commands.json
+	make O=../cl CC='ccache clang' -j160 compile_commands.json
 }
 
 function run()
@@ -19,7 +19,7 @@ function run()
 }
 
 case "$CMD" in
-	all) build && run ;;
+	all) build && run "$@" ;;
 	build) build ;;
 	run) run "$@" ;;
 	shell) exec /bin/bash ;;
