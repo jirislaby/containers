@@ -4,6 +4,7 @@ RUN zypper --non-interactive refresh
 RUN zypper --non-interactive install \
   gcc \
   git-core \
+  libyaml-devel \
   make \
   ruby-devel
 

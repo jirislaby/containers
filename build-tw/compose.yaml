@@ -4,6 +4,7 @@ services:
     build: .
     stdin_open: true
     tty: true
+    #privileged: true # for osc build
     environment:
       CCACHE_MAXSIZE: 20G
       CCACHE_DIR: /src/ccache
