@@ -67,8 +67,8 @@ RUN ninja install
 
 WORKDIR /src
 
-ENV PATH /home/jslaby_loc/clang-struct-install/usr/local/bin/:$PATH
-ENV LD_LIBRARY_PATH /home/jslaby_loc/clang-struct-install/usr/local/lib64/
+ENV PATH=/home/jslaby_loc/clang-struct-install/usr/local/bin/:$PATH
+ENV LD_LIBRARY_PATH=/home/jslaby_loc/clang-struct-install/usr/local/lib64/
 
 #USER 0
 #RUN zypper --no-refresh --non-interactive install \
