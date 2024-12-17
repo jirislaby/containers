@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -xe
+
+VER="$1"
+test -n "$VER"
+
+docker tag ror-ror-clang-struct:latest jirislaby/ror-clang-struct:latest
+docker push jirislaby/ror-clang-struct:latest
+docker tag ror-ror-clang-struct:latest "jirislaby/ror-clang-struct:$VER"
+docker push "jirislaby/ror-clang-struct:$VER"
