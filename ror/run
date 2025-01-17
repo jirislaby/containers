@@ -3,4 +3,4 @@
 set -xe
 
 sudo /sbin/sysctl net.ipv4.conf.br0.forwarding=1
-CPUS=8 exec docker-compose up -d
+CPUS=8 exec docker-compose up -d --force-recreate
