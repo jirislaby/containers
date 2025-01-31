@@ -7,15 +7,15 @@ shift
 
 function build()
 {
-	cd /src/linux
-	make O=../cl CC='ccache clang' -j160 compile_commands.json
+	cd /src/linux-cl
+	make O=../cl CC='clang' -j160 compile_commands.json
 }
 
 function run()
 {
 	cd /src/cl
 	rm structs.db || true
-	time run_commands.pl -b ../linux/ "$@"
+	time run_commands.pl -b ../linux-cl/ "$@"
 }
 
 case "$CMD" in
