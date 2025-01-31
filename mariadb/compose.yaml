@@ -1,0 +1,15 @@
+services:
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: xxx
+    ports:
+      - "3306:3306"
+    volumes:
+      - type: bind
+        source: data/
+        target: /var/lib/mysql/
+        bind: {
+          selinux: Z
+        }
