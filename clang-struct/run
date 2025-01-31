@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo Running with:
+git -C /dev/shm/jslaby/linux-cl show @:Makefile | head -4 | tail -3
+echo
+echo -n "OK? "
+read
+
+exec docker-compose run --rm clang-struct -s
