@@ -8,13 +8,15 @@ shift
 function build()
 {
 	cd /src/linux-cl
+	export KBUILD_BUILD_TIMESTAMP="$(git show -s --format=%cD)"
+	export KBUILD_BUILD_USER=geeko
+	export KBUILD_BUILD_HOST=buildhost
 	make O=../cl CC='clang' -j160 compile_commands.json
 }
 
 function run()
 {
 	cd /src/cl
-	rm structs.db || true
 	time run_commands.pl -b ../linux-cl/ "$@"
 }
 

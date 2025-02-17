@@ -26,4 +26,4 @@ RUN git pull
 RUN bundle exec rake assets:precompile
 
 EXPOSE 3000
-ENTRYPOINT bundle exec rails server -e production --no-log-to-stdout
+ENTRYPOINT [ "bundle", "exec", "rails", "server", "-e", "production", "--no-log-to-stdout" ]

@@ -6,4 +6,4 @@ echo
 echo -n "OK? "
 read
 
-exec docker-compose run --rm clang-struct -s
+exec docker-compose run --rm clang-struct all --silent "$@"
