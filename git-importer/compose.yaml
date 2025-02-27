@@ -1,0 +1,11 @@
+services:
+  git-importer:
+    build: .
+    stdin_open: true
+    tty: true
+    environment:
+      - GITEA_TOKEN=$GITEA_TOKEN
+    volumes:
+      - type: bind
+        source: home
+        target: /home/jslaby
