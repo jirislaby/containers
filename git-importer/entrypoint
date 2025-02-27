@@ -1,0 +1,44 @@
+#!/bin/bash
+
+set -xe
+
+CMD="$1"
+shift
+
+function stop_db()
+{
+	pg_ctl -w -D /home/jslaby/db stop
+}
+
+function run_db()
+{
+	if ! pg_ctl -D /home/jslaby/db -l /home/jslaby/db/logfile start; then
+		echo logs:
+		grep -h '.*' /home/jslaby/db/logfile /home/jslaby/db/log 2>/dev/null || true
+		exit 1
+	fi
+	trap stop_db EXIT
+}
+
+function init_db()
+{
+	initdb /home/jslaby/db
+	run_db
+	createdb -O jslaby imported_git
+}
+
+function shell()
+{
+	if [ -d /home/jslaby/db ]; then
+		run_db
+	else
+		init_db
+	fi
+	/bin/bash
+}
+
+case "$CMD" in
+	init_db) init_db ;;
+	shell) shell ;;
+	default) exit 1 ;;
+esac
