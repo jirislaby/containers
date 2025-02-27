@@ -19,12 +19,14 @@ RUN zypper --no-refresh --non-interactive install \
   gcc-c++ \
   git-core \
   libelf-devel \
+  libmariadb-devel \
   llvm-devel \
   make \
+  mariadb-client \
   ncurses-devel \
   ninja \
   openssl-devel \
-  'perl(DBD::SQLite)' \
+  'perl(DBD::MariaDB)' \
   'perl(DBI)' \
   'perl(Error)' \
   'perl(Git)' \
@@ -32,8 +34,6 @@ RUN zypper --no-refresh --non-interactive install \
   'perl(JSON::XS)' \
   'perl(Parallel::ForkManager)' \
   slaby-scripts \
-  sqlite3 \
-  sqlite3-devel \
   vim \
   vim-data
 
@@ -50,18 +50,16 @@ RUN mkdir /home/jslaby_loc
 RUN chown jslaby /home/jslaby_loc
 USER jslaby
 
-RUN echo ".read /usr/share/slaby-scripts/sqliterc" > /home/jslaby/.sqliterc
-
 WORKDIR /home/jslaby_loc
 COPY timestamp .
-RUN git clone https://github.com/jirislaby/clang-struct
+RUN git clone -b mariadb https://github.com/jirislaby/clang-struct
 RUN mkdir clang-struct/build/
 WORKDIR clang-struct/build/
 RUN cmake -GNinja .. \
 	-DCMAKE_C_COMPILER=clang \
 	-DCMAKE_CXX_COMPILER=clang++ \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo
-RUN ninja
+RUN ninja -v
 ENV DESTDIR=/home/jslaby_loc/clang-struct-install/
 RUN ninja install
 

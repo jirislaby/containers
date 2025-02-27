@@ -13,3 +13,21 @@ services:
       - type: bind
         source: home
         target: /home/jslaby
+    depends_on:
+      - clang-struct-mariadb
+    #links:
+    #  - "clang-struct-mariadb:db"
+
+  clang-struct-mariadb:
+    image: mariadb:latest
+    environment:
+      MARIADB_ROOT_PASSWORD: xxx
+    ports:
+      - "30000:3306"
+#    volumes:
+#      - type: bind
+#        source: mariadb/
+#        target: /var/lib/mysql/
+#        bind: {
+#          selinux: Z
+#        }
