@@ -17,12 +17,19 @@ function build()
 function run()
 {
 	cd /src/cl
-	time run_commands.pl -b ../linux-cl/ "$@"
+	time run_commands.pl --db-host=clang-struct-mariadb -b ../linux-cl/ "$@"
+}
+
+function createdb()
+{
+	cat /home/jslaby_loc/clang-struct-install/usr/local/share/mariadb_create.sql
+	mariadb -uroot -pxxx -hclang-struct-mariadb -P0 < /home/jslaby_loc/clang-struct-install/usr/local/share/mariadb_create.sql
 }
 
 case "$CMD" in
 	all) build && run "$@" ;;
 	build) build ;;
+	createdb) createdb ;;
 	run) run "$@" ;;
 	shell) exec /bin/bash ;;
 esac
