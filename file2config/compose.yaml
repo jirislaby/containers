@@ -1,0 +1,12 @@
+services:
+  file2config:
+    build: .
+    stdin_open: true
+    tty: true
+    volumes:
+      - type: bind
+        source: /dev/shm/jslaby/
+        target: /src/
+      - type: bind
+        source: home
+        target: /home/jslaby
