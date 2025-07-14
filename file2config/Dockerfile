@@ -46,6 +46,12 @@ RUN echo ".read /usr/share/slaby-scripts/sqliterc" > /home/jslaby/.sqliterc
 
 WORKDIR /home/jslaby_loc
 COPY timestamp .
+
+USER 0
+RUN zypper --non-interactive --gpg-auto-import-keys refresh
+RUN zypper --no-refresh --non-interactive dup -l --no-recommends
+USER jslaby
+
 RUN git clone https://github.com/jirislaby/file2config
 WORKDIR file2config
 RUN meson setup build

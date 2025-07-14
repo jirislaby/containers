@@ -5,24 +5,12 @@ set -xe
 CMD="$1"
 shift
 
-function build()
-{
-	cd /src/linux-cl
-	export KBUILD_BUILD_TIMESTAMP="$(git show -s --format=%cD)"
-	export KBUILD_BUILD_USER=geeko
-	export KBUILD_BUILD_HOST=buildhost
-	make O=../cl CC='clang' -j160 compile_commands.json
-}
-
 function run()
 {
-	cd /src/cl
-	time run_commands.pl -b ../linux-cl/ "$@"
+	f2c_create_db --dest=/src/fill-db/ --sqlite=/src/fill-db/conf_file_map.sqlite --sqlite-create "$@"
 }
 
 case "$CMD" in
-	all) build && run "$@" ;;
-	build) build ;;
 	run) run "$@" ;;
 	shell) exec /bin/bash ;;
 esac
