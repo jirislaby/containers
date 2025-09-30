@@ -1,0 +1,6 @@
+services:
+  repology:
+    #restart: unless-stopped
+    build: .
+    #stdin_open: true
+    #tty: true
