@@ -10,4 +10,4 @@ if [ "$#" -eq 0 ]; then
 	set -- all --silent
 fi
 
-exec docker-compose run --rm clang-struct "$@"
+exec docker-compose run clang-struct "$@"

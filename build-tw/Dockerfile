@@ -14,7 +14,13 @@ RUN zypper --no-refresh --non-interactive install \
   git-core \
   libelf-devel \
   make \
+  ncurses-devel \
   openssl-devel
+
+RUN zypper --no-refresh --non-interactive install \
+  clang \
+  lld \
+  llvm
 
 RUN zypper --no-refresh --non-interactive install \
   bash-completion \
